@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop-Rotor VTOL UAV Research - Portfolio</title>
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --background: #f5f5f7;
+            --accent: #0071e3;
+            --text: #1d1d1f;
+            --text-light: #86868b;
+            --border: #d2d2d7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: #f5f5f7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .back-button {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s;
+            font-weight: 400;
+        }
+
+        .back-button:hover {
+            opacity: 0.7;
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        .project-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .project-category {
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-description {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.9375rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .meta-item span {
+            color: var(--text-light);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #e3e3e8 0%, #d1d1d6 100%);
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+
+        .project-content {
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-row .row-media {
+            aspect-ratio: 4/3;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #e3e3e8 0%, #d1d1d6 100%);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9375rem;
+        }
+
+        .content-row.media-right .row-media {
+            order: 2;
+        }
+
+        img.row-media.natural {
+            aspect-ratio: auto;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .disclosure-note {
+            border-left: 3px solid var(--border);
+            padding-left: 1.25rem;
+        }
+
+        .disclosure-note p {
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .disclosure-note a {
+            color: var(--accent);
+            text-decoration: none;
+            font-style: normal;
+        }
+
+        .disclosure-note a:hover {
+            opacity: 0.7;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-grid .project-image {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            .project-container {
+                padding: 100px 1rem 2rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .image-grid,
+            .content-row,
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .content-row.media-right .row-media {
+                order: 0;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="back-button">
+            <span>←</span> Back to Portfolio
+        </a>
+    </nav>
+
+    <div class="project-container">
+        <div class="project-header">
+            <div class="project-category">MIT Bioinstrumentation Lab</div>
+            <h1>Stop-Rotor VTOL UAV Research</h1>
+            <p class="project-description">
+                Ongoing UROP research on a stop-rotor VTOL aircraft, working on flight controls
+                and aerodynamics under Prof. Ian Hunter's Bioinstrumentation Lab.
+            </p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Lab</strong>
+                    <span>MIT Bioinstrumentation Lab</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Year</strong>
+                    <span>2025 &ndash; Present</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Role</strong>
+                    <span>Controls & Aerodynamics Researcher</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-image" style="background: url('Stop Rotor Cover Photo.png') center/cover no-repeat;"></div>
+
+        <div class="project-content">
+            <p>
+                Ongoing UROP research on a stop-rotor VTOL aircraft in Prof. Ian Hunter's Bioinstrumentation
+                Lab, advised by Denzel Carter and funded by the Paul E. Gray (1954) UROP Fund. The work
+                spans flight controls and aerodynamics, ahead of an upcoming research publication.
+            </p>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <span class="section-label">Control Systems</span>
+                <p>
+                    I redesigned the swashplate actuator configuration in SolidWorks for increased
+                    rigidity, running a motion study to verify actuator clearances across the full range of
+                    travel. I built a swashplate controller implementing force-to-command decomposition,
+                    CCPM mixing, and servo-horn linearization, then validated the main rotor and swashplate
+                    CCPM logic through hardware-in-the-loop testing on Pixhawk 6X flight hardware, running
+                    the controller against a Simulink plant model.
+                </p>
+            </div>
+            <div>
+                <span class="section-label">Aerodynamics</span>
+                <p>
+                    I'm leading wind tunnel testing and data acquisition for the aerodynamic evaluation of a
+                    set of novel VTOL airfoils in MIT AeroAstro's 2 to 3 ft tunnel, in support of an ICRA
+                    2027 submission.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row">
+            <img class="row-media natural" src="Wind Tunnel Work.jpg" alt="VTOL airfoil mounted in the wind tunnel test rig">
+            <div class="row-text">
+                <span class="section-label">Wind Tunnel Testing</span>
+                <p>
+                    I designed wake-rake and manometer measurement procedures in consultation with Prof.
+                    Mark Drela, author of XFOIL. I applied the Jones momentum-integral method to extract
+                    profile drag alongside lift measurements, supporting CFD analysis.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-content disclosure-note">
+            <p>
+                This project involves unpublished research, so I'm keeping the details shared here
+                intentionally limited to protect that work ahead of publication. If you'd like to learn
+                more, feel free to <a href="mailto:vednaik@mit.edu">reach out directly</a>, I'm happy to
+                discuss specifics one-on-one.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

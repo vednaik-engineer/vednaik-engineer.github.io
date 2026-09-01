@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Pit-Stop Robot - Portfolio</title>
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --background: #f5f5f7;
+            --accent: #0071e3;
+            --text: #1d1d1f;
+            --text-light: #86868b;
+            --border: #d2d2d7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: #f5f5f7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .back-button {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s;
+            font-weight: 400;
+        }
+
+        .back-button:hover {
+            opacity: 0.7;
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        .project-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .project-category {
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-description {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.9375rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .meta-item span {
+            color: var(--text-light);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #e3e3e8 0%, #d1d1d6 100%);
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            background: #000;
+        }
+
+        /* Section label: replaces heavy bold h2s with a small eyebrow tag */
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+
+        .project-content {
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Two-column media + text row */
+        .content-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-row .row-media {
+            aspect-ratio: 4/3;
+            border-radius: 16px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-row.media-right .row-media {
+            order: 2;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-grid .project-image {
+            margin-bottom: 0;
+            aspect-ratio: 4/3;
+        }
+
+        .image-caption {
+            margin-top: 0.6rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .requirements-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 0;
+        }
+
+        .requirements-list li {
+            font-size: 1rem;
+            line-height: 1.5;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .requirements-list li::before {
+            content: '\2014';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            .project-container {
+                padding: 100px 1rem 2rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .image-grid,
+            .content-row,
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .content-row.media-right .row-media {
+                order: 0;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="back-button">
+            <span>←</span> Back to Portfolio
+        </a>
+    </nav>
+
+    <div class="project-container">
+        <div class="project-header">
+            <div class="project-category">MIT 2.007 &ndash; Design and Manufacturing I</div>
+            <h1>Autonomous Pit-Stop Robot</h1>
+            <p class="project-description">
+                I designed and built two robots for 2.007's "F007: Design to Survive" competition, an
+                F1-themed head-to-head contest, including a pit-stop robot that was the only
+                design in the class to complete a full tire change fully autonomously.
+            </p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Class</strong>
+                    <span>2.007</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Year</strong>
+                    <span>Spring 2026</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Result</strong>
+                    <span>Top 4, DQ in quarterfinals</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-image" style="background: url('2.007 robot page assets/robot-hero.png') center/cover no-repeat;"></div>
+
+        <div class="project-content">
+            <p>
+                Two robots for 2.007's F1-themed "F007: Design to Survive" competition: an autonomous
+                pit-stop robot and a human-driven racer. The pit-stop robot was the only design in the class
+                to complete a full tire change autonomously, and both entries were competitive enough
+                for a top-4 seed out of nearly 100 competitors, before a quarterfinal disqualification over
+                a rules dispute.
+            </p>
+        </div>
+
+        <video class="project-video" style="margin-bottom: 0.6rem;" controls playsinline>
+            <source src="2.007 robot page assets/robot-demo.mov">
+            Your browser doesn't support embedded video. The file is at
+            2.007 robot page assets/robot-demo.mov.
+        </video>
+        <p class="image-caption" style="margin-top: 0; margin-bottom: 2.5rem;">
+            The autonomous pit-stop robot completing a tire change
+        </p>
+
+        <div class="two-col">
+            <div>
+                <span class="section-label">Strategy</span>
+                <p>
+                    Scoring rewarded repetition over a single clean run, so I planned to cycle the
+                    tire-change task as many times as possible in the two-minute match, with a secondary
+                    "mini-me" robot optionally sent out for bonus laps.
+                </p>
+            </div>
+            <div>
+                <span class="section-label">Requirements</span>
+                <ul class="requirements-list">
+                    <li>&ge;55 N of sustained vertical lift force</li>
+                    <li>Non-backdrivable lift mechanism</li>
+                    <li>Nut removal in under 10 seconds</li>
+                    <li>Reliable self-alignment to the tire/nut</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-row" style="margin-top: 2.5rem;">
+            <div class="row-media" style="background-image: url('2.007 robot page assets/nut-driver-cad.png');"></div>
+            <div class="row-text">
+                <span class="section-label">Nut Driver</span>
+                <p>
+                    I originally geared it 2:1 for torque margin that turned out unnecessary, costing half
+                    its speed, so I redesigned it to drive the socket directly, with added shaft support to
+                    carry the nut's mass in the socket.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row media-right">
+            <div class="row-media" style="background-image: url('2.007 robot page assets/lift-mechanism-iso.png');"></div>
+            <div class="row-text">
+                <span class="section-label">Lift Mechanism</span>
+                <p>
+                    A servo drives an ACME lead screw into a wedge pair, converting rotation into lift. The
+                    tire needs only a few millimeters of travel to clear the hub, so the full stroke is just
+                    0.65 in, guided by an integrated slot that keeps the lifting block from sliding as it's
+                    pushed up.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row">
+            <div class="row-media" style="background-image: url('2.007 robot page assets/lift-mechanism-profile.png');"></div>
+            <div class="row-text">
+                <span class="section-label">Lift Force</span>
+                <p>
+                    Combined mechanical advantage of the screw and wedge: roughly 1,359 N available against
+                    the 55 N requirement, intentionally overbuilt against friction and misalignment.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row media-right">
+            <div class="row-media" style="background-image: url('2.007 robot page assets/drivetrain-cad.png');"></div>
+            <div class="row-text">
+                <span class="section-label">Drivetrain</span>
+                <p>
+                    Two LDO 217:1 motors drive the wheels directly, chosen for torque and traction over top
+                    speed. At stall (&approx;2.1 Nm), each wheel delivers roughly 61 N of horizontal force.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row">
+            <div class="row-media" style="background-image: url('2.007 robot page assets/frame-flat-pattern.png');"></div>
+            <div class="row-text">
+                <span class="section-label">Frame</span>
+                <p>
+                    I built the frame around minimizing part count, cutting slotted joints and alignment
+                    features directly into it along with integrated guides for the lift mechanism. I placed
+                    the front axle as far forward as possible to center the loaded mass between the axles.
+                </p>
+            </div>
+        </div>
+
+        <div class="project-content" style="margin-bottom: 0;">
+            <span class="section-label">Lessons Learned</span>
+            <ul class="requirements-list">
+                <li>Compound-angle milling takes far longer than flat features</li>
+                <li>Shaft misalignment compounds fast</li>
+                <li>Excess factor of safety costs speed and mass</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

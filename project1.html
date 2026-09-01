@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural Carbon Fiber Seat - Portfolio</title>
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --background: #f5f5f7;
+            --accent: #0071e3;
+            --text: #1d1d1f;
+            --text-light: #86868b;
+            --border: #d2d2d7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            color: var(--text);
+            background: #f5f5f7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .back-button {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s;
+            font-weight: 400;
+        }
+
+        .back-button:hover {
+            opacity: 0.7;
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        .project-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .project-category {
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-description {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.9375rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .meta-item span {
+            color: var(--text-light);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #e3e3e8 0%, #d1d1d6 100%);
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+
+        .project-content {
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-row .row-media {
+            aspect-ratio: 4/3;
+            border-radius: 16px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Natural sizing: box shape matches the image's own aspect ratio instead of being cropped */
+        img.row-media.natural {
+            aspect-ratio: auto;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content-row.media-right .row-media {
+            order: 2;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-grid .project-image {
+            margin-bottom: 0;
+            aspect-ratio: 4/3;
+        }
+
+        .image-caption {
+            margin-top: 0.6rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1rem;
+            }
+
+            .project-container {
+                padding: 100px 1rem 2rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .image-grid,
+            .content-row,
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .content-row.media-right .row-media {
+                order: 0;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="back-button">
+            <span>←</span> Back to Portfolio
+        </a>
+    </nav>
+
+    <div class="project-container">
+        <div class="project-header">
+            <div class="project-category">MIT Motorsports</div>
+            <h1>Structural Carbon Fiber Seat</h1>
+            <p class="project-description">
+                I designed, analyzed, and manufactured MIT Motorsports' first fully structural driver's seat,
+                enabling a non-structural firewall and cutting 4 kg from the seat/firewall system on the MY25 car.
+            </p>
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Team</strong>
+                    <span>MIT Motorsports</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Year</strong>
+                    <span>2025 (MY25)</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Role</strong>
+                    <span>Seat Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-image" style="background: url('motorsports seat page assets/Motorsports Seat.png') center/cover no-repeat;"></div>
+
+        <div class="project-content">
+            <p>
+                MIT Motorsports' first fully structural driver's seat, replacing the reliance on a
+                structural firewall with a load-bearing seat design. The result cut 4 kg from the combined
+                seat/firewall system on the MY25 car, a meaningful weight savings on a car where
+                every kilogram affects lap time.
+            </p>
+        </div>
+
+        <div class="two-col">
+            <div>
+                <span class="section-label">Construction</span>
+                <p>
+                    A carbon fiber sandwich structure with a foam core, engineered to meet FSAE structural
+                    requirements while staying as light as possible.
+                </p>
+            </div>
+            <div>
+                <span class="section-label">Design & Analysis</span>
+                <p>
+                    I modeled it in Siemens NX and verified deflection and yield margins by hand
+                    calculation, using material properties from carbon fiber coupon testing run earlier in
+                    the season.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row">
+            <div class="row-media" style="background-image: url('motorsports seat page assets/IMG_6821 - Copy.JPG');"></div>
+            <div class="row-text">
+                <span class="section-label">Mold</span>
+                <p>
+                    I CNC-machined a negative mold from foam to form the surface the carbon fiber layup
+                    was built against.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row media-right">
+            <img class="row-media natural" src="motorsports seat page assets/IMG_6722 - Copy.jpg" alt="Finishing and sanding the mold surface">
+            <div class="row-text">
+                <span class="section-label">Finishing</span>
+                <p>
+                    I finished and sanded the mold surface by hand ahead of layup, since any imperfection
+                    would telegraph directly into the final carbon shell.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row">
+            <img class="row-media natural" src="motorsports seat page assets/IMG_6910 - Copy.JPG" alt="Vacuum bagging the carbon fiber wet layup">
+            <div class="row-text">
+                <span class="section-label">Layup</span>
+                <p>
+                    I hand-laid a carbon fiber sandwich wet layup over the mold and vacuum bagged it to
+                    cure. I also designed and turned a set of aluminum hardpoints that mount through the
+                    shell at the load-bearing attachment points, transferring load into the vehicle frame
+                    without crushing the foam core.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-row media-right">
+            <img class="row-media natural" src="motorsports seat page assets/driving-autocross.jpg" alt="Driving the car at FSAE Michigan 2025">
+            <div class="row-text">
+                <span class="section-label">Driving</span>
+                <p>
+                    My work extended beyond the seat: telemetry data helped me dial in the car's setup
+                    ahead of competition. At FSAE Michigan 2025, I drove both Autocross and Endurance,
+                    helping bring the team to a 9th place overall finish, the best result in team history
+                    since 2017.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

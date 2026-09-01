@@ -1,0 +1,24 @@
+# Local agent/tooling config, not part of the site
+.claude/
+
+# Unused/empty scaffold folder
+assets/
+
+# Duplicate source photos, superseded by the copies used on the page
+Random Image Files \[move files + delete this folder\]/
+
+# Working documents, not meant to be published
+Portfolio Projects List Doc.docx
+~$rtfolio Projects List Doc.docx
+
+# Unfinished placeholder page, not linked from the site
+project6.html
+
+# Unused source photos, not referenced by any page
+IMG_5229.JPG
+IMG_8630.JPG
+IMG_8679 (1).JPG
+
+# OS cruft
+.DS_Store
+Thumbs.db
